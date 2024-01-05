@@ -1,0 +1,43 @@
+var mergeArr2 = [55, 66]
+var mergeArr1 = [33, 44]
+
+var mergeArrA = [33, 44, 55];
+var mergeArrB = [11, 66];
+
+var arrLeft = [22];
+var arrRight = [11, 33]
+
+function mergeSortedArray(arr1, arr2) {
+    let sortedArray = []
+    let i = 0
+    let j = 0
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) {
+            sortedArray.push(arr1[i])
+            i++
+        } else {
+            sortedArray.push(arr2[j])
+            j++
+        }
+    }
+    while (arr1[i] < arr1.length) {
+        sortedArray.push(arr1[i])
+        i++
+    }
+    while (arr2[j] < arr2.length) {
+        sortedArray.push(arr2[j])
+        j++
+    }
+
+    return sortedArray;
+}
+
+        
+
+
+    
+    
+
+console.log(mergeSortedArray(mergeArr2, mergeArr1))
+console.log(mergeSortedArray(mergeArrA, mergeArrB))
+console.log(mergeSortedArray(arrLeft,arrRight))
