@@ -1,0 +1,30 @@
+find consecutive sums
+
+
+let k = 16
+let arr = [2, 5, 3, 6, 7, 0, 0, 23, 11]
+
+// output=[
+//     [2, 5, 3, 6],
+//     [3, 6, 7],
+//     [3, 6, 7, 0],
+//     [3,6,7,0,0]
+// ]
+
+function consecutiveSums(arr,k) {
+    let array = []
+    for (let i = 0; i < arr.length; i++){
+        let sum = 0
+        let subArray = []
+        for (let j = i; j < arr.length; j++){
+            sum += arr[j]
+            subArray.push(arr[j])
+            if (sum === k) {
+                array.push(subArray)
+                break
+            }
+        } 
+    }
+    return array
+}
+console.log(consecutiveSums(arr, k))
