@@ -1,0 +1,25 @@
+//two sums
+
+const arrAB = [2, 11, 7, 15];
+const G = 9;
+
+const arrABB = [3, 2, 4];
+const H = 6
+
+function twoSums(arr, k) {
+    result=[]
+    for (let i = 0; i < arr.length; i++){
+        for (let j = i + 1; j < arr.length; j++){
+            if (arr[i] + arr[j] == k) {
+                result.push(i)
+                result.push(j)
+            }
+        }
+    }
+    return result
+}
+
+
+
+console.log(twoSums(arrAB, G))
+console.log(twoSums(arrABB,H))
