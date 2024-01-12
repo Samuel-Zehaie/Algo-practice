@@ -1,0 +1,46 @@
+Given an array with objects, find the object with the matching id. update one of the key values with the specificed value.  if the id doesn't exist then return null
+
+
+
+const students = [
+    {
+        id: 1,
+        name: "student1",
+        isLateToday: false,
+        lateCount: 15,
+        redBeltStatus: false
+    },
+    {
+        id: 2,
+        name: "student2",
+        isLateToday: false,
+        lateCount: 1,
+        redBeltStatus: false
+    },
+    {
+        id: 3,
+        name: "student3",
+        isLateToday: false,
+        lateCount: 0,
+        redBeltStatus: false
+        
+    }
+];
+function findByIdAndUpdate(id, updatedValues, collection) {
+    for (let i = 0; i < collection.length; i++) {
+        if (collection[i].id === id) {
+            for (let key in updatedValues) {
+                if (collection[i].hasOwnProperty(key)) {
+                    collection[i][key] = updatedValues[key]
+                }
+            }
+            return collection[i]
+        }
+    }
+    return null
+}
+
+
+console.log(findByIdAndUpdate(3, { redBeltStatus: true }, students))
+console.log(findByIdAndUpdate(1, { isLateToday: true, lateCount: 16, randomKey: "randomValue" }, students))
+console.log(findByIdAndUpdate(5,{}, students))
