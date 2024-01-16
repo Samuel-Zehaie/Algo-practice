@@ -1,0 +1,52 @@
+with this algo, when you see # = backspace(delete).  so the #, and the previous element needed to be deleted.  
+example. 'ab#c" = would equal to "ac"  removing the # and the previous element.  
+we are going to run the function on S(string) as well as T(string).  after the function is done, if the two strings are equal return a boolean.
+
+
+const S1 = "ab#c";
+
+
+const T1 = "ad#c";
+
+const expected1 = true;
+
+const S2 = "ab##";
+
+const T2 = "c#d#";
+
+const exected2 = true;
+
+const S3 = "#c";
+
+const T3 = "#a#c"
+
+const expected3 = true;
+
+const S4 = "a#c";
+
+const T4 = "b";
+
+const expected4 = false;
+
+function backspaceStringCompare(S, T) {
+    let string1 = S.split("")
+    let string2 = T.split("")
+    for (let i = 0; i < string1.length; i++){
+        if (string1[i] === "#") {
+            string1.splice(i - 1, 2)
+            i-=2
+        }
+    }
+    for (let i = 0; i < string2.length; i++){
+        if (string2[i] === "#") {
+            string2.splice(i - 1, 2)
+            i-=2
+        }
+    }
+    return string1.join("") === string2.join("") ? true : false;
+
+}
+console.log(backspaceStringCompare(S1, T1)); //true
+console.log(backspaceStringCompare(S2, T2)); //true
+console.log(backspaceStringCompare(S3, T3)); //true
+console.log(backspaceStringCompare(S4, T4)); //false
