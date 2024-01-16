@@ -1,0 +1,52 @@
+the algo basically asks if the string can be rearranged to create a palindrome.  if the strinng length is even, then an even occurance of the elements(characters) must be present in order for it to be rearranged to a palindrome.
+  if the string length is odd, then only one of the element(character) must be odd.  any more than one chracter being odd in an odd length would make it false.  
+
+  we are not rearranging the string to be a palindrome, only checking to see if it can be a palindrome given the explanation above. 
+
+  palindrome examples (level, racecar, tacocat, radar, kayak)
+
+
+
+const str88 ="" ;
+const expected88 = false; 
+
+const str89 = "a";;
+const expected89 = true;
+
+const str90 = "ddaa";
+const expected90 = true;
+
+const str91 = "dda";
+const expected91 = true;
+
+const str92 = "aadda";
+const expected92 = true;
+
+function isPalindrome(str) {
+    let string = str.split("")
+    let freqTable = {}
+    if (string.length <= 0) {
+        return false
+    }
+    for (let i = 0; i < string.length; i++){
+        let char = string[i]
+        if (freqTable[char] != undefined) {
+            freqTable[char]++
+        } else {
+            freqTable[char]=1
+        }
+    }
+    let oddCount=0
+    for (key in freqTable) {
+        if (freqTable[key] % 2 !== 0) {
+            oddCount ++
+        }
+    }
+    return oddCount > 1 ? false: true
+}
+
+console.log(isPalindrome(str88))
+console.log(isPalindrome(str89))
+console.log(isPalindrome(str90))
+console.log(isPalindrome(str91))
+console.log(isPalindrome(str92))
