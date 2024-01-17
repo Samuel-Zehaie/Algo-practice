@@ -1,0 +1,61 @@
+
+
+class ListNode{
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class SinglyLinkedList{
+    constructor() {
+        this.head = null;
+    }
+
+insertAtBack(data) {
+    var newNode = new ListNode(data);
+
+    if (this.head === null) {
+        this.head = newNode
+        return this
+    }
+    var runner = this.head
+    while (runner.next !== null) {
+        runner = runner.next
+    }
+
+    runner.next = newNode;
+    return this;
+    }
+
+    toArr() {
+        var arr = [];
+        var runner = this.head;
+        while (runner !== null) {
+            arr.push(runner.data);
+            runner = runner.next;
+        }
+        return arr;
+    }
+}
+
+const emptyList = new SinglyLinkedList()
+
+const singleNodeList = new SinglyLinkedList().insertAtBack(1);
+
+const biNodeList = new SinglyLinkedList().insertAtBack(1).insertAtBack(2);
+
+const firstThreeList = new SinglyLinkedList().insertAtBack(1).insertAtBack(2).insertAtBack(3);
+
+const secondThreeList = new SinglyLinkedList().insertAtBack(4).insertAtBack(5).insertAtBack(6);
+
+const unorderedList = new SinglyLinkedList().insertAtBack(-5).insertAtBack(-10).insertAtBack(4).insertAtBack(-3).insertAtBack(6).insertAtBack(1).insertAtBack(-7).insertAtBack(-2);
+
+console.log(emptyList.toArr())
+console.log(singleNodeList.toArr())
+console.log(biNodeList.toArr())
+console.log(firstThreeList.toArr())
+console.log(secondThreeList.toArr())
+console.log(unorderedList.toArr())
+
+
+//
