@@ -1,0 +1,65 @@
+
+class ListNode{
+    constructor(data) {
+        this.data = data
+        this.next=null
+    }
+}
+class SinglyLinkedList {
+    constructor() {
+        this.head = null
+        
+    }
+    
+    insertatback(...data) {
+        var newNode = new ListNode(data)
+        var runner = this.head
+        if (this.head === null) {
+            this.head = newNode
+            return this
+        }
+        while (runner.next !== null) {
+            runner = runner.next
+        }
+        runner.next = newNode
+        return this
+    }
+    toArr() {
+        var arr = []
+        var runner = this.head
+        while (runner !== null) {
+            arr.push(runner.data)
+            runner = runner.next
+        }
+        return arr
+    }
+
+    removeback() {
+        var runner = this.head
+        if (runner.next === null) {
+            this.head = null
+            return runner.data
+        }
+        
+        let previous = null
+        while (runner.next !== null) {
+            previous = runner
+            runner=runner.next
+        }
+        previous.next = null
+        return runner.data
+    }
+    contains(val) {
+        runner = this.head
+        while (runner !== null) {
+            if (runner.data === val) {
+                return true
+            }
+            runner=runner.next
+        }
+        return false
+    }
+}
+
+const newList = new SinglyLinkedList().insertatback(1,2)
+console.log(newList.toArr())
