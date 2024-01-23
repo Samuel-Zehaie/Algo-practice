@@ -1,0 +1,58 @@
+SinglyLinkedList methods for remove second to last value, remove value, preappend value. 
+
+
+secondToLast() {
+        var runner = this.head
+        let previous = null
+        if (runner === null || !runner.next) {
+            return null
+        }
+        while (runner.next.next) {
+            previous = runner
+            runner = runner.next
+        }
+        previous.next = runner.next
+        runner.next = null
+        return runner.data
+    }
+ 
+    RemoveValue(val) {
+        let previous = null
+        let runner = this.head
+        if (this.head.data === val && runner!==null) {
+            this.head = runner.next
+            runner = null
+            return true
+        }
+    
+        while (runner !== null) {
+            if (runner.data === val) {
+                previous.next = runner.next
+                runner = null
+                return true
+            }
+            previous = runner
+            runner = runner.next
+        }
+        return false
+    }
+    preapend(newVal, Target) {
+        var newVal = new ListNode(data)
+        let previous = null
+        let runner = this.head
+        if (this.head === Target || runner !==null) {
+            this.head = newVal
+            newVal.next = runner
+            return true
+        }
+        while (runner !== null) {
+            if (runner.data === Target) {
+                previous.next = newVal
+                newNode.next = runner
+                return true
+            }
+            previous = runner
+            runner = runner.next
+        }
+        return false
+    }
