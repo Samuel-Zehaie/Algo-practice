@@ -1,0 +1,67 @@
+
+    insert(newVal) {
+        var current = this.root
+        var newNode = new BSTNode(newVal);
+        var previous = null;
+        if (this.root === null) {
+            this.root=newNode
+        }
+            while (current !== null) {
+                if (newVal < current.data) {
+                previous=current
+                current = current.left
+                
+                } else {
+                previous=current
+                current=current.right
+            }
+        }
+        if (newVal < previous.data) {
+            previous.left = newNode
+        } else {
+            previous.right = newNode
+        }
+        return this
+    }
+
+    insertRecursive(newVal, curr = this.root) {
+        if (curr === null) {
+            curr = newNode
+        }
+        if (newVal < curr.data) {
+            if (curr.left === null) {
+                var newNode = new BSTNode(newVal);
+                curr.left = newNode
+                return this.root
+            }
+            return this.insertRecursive(newVal, curr.left)
+        
+        }
+        if (newVal > curr.data) {
+            if (curr.right === null) {
+                var newNode = new BSTNode(newVal);
+                curr.right = newNode
+                return this.root
+            }
+            return this.insertRecursive(newVal, curr.right)
+        }
+    }
+    inserrt(newVal) {
+        var newNode = new BSTNode(newVal);
+        var current = this.root
+        if (this.root === null) {
+            this.root = newNode
+            return
+        }
+        if (newVal < current.data) {
+            if (current.left !== null) {
+            current=current.left
+            }
+            current.left=newNode
+        } else {
+            if(current.right!==null){
+                current=current.right
+            }
+            current.right=newNode
+        }
+    }
