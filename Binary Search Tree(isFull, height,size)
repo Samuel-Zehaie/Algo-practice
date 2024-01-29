@@ -1,0 +1,32 @@
+    size(node = this.root, count = 0) {
+        
+        if (node) {
+            count++
+            count = this.size(node.left, count)
+            count = this.size(node.right, count)
+        }
+        return count
+    }
+
+    height(node = this.root) {
+        if (node == null) {
+            return 0
+        }
+        var    heightLeft = this.height(node.left, height +1)
+         var   heightRight = this.height(node.right, height +1)
+        
+        return Math.max(heightLeft,heightRight)
+    }
+    isFull(node = this.root) {
+        if (node === null) {
+            return false
+        }
+        if (node.left == null && node.right == null) {
+            return true
+        } else if (node.left && node.right) {
+            return this.isFull(node.left) &&this.isFull(node.right)
+        }
+        else {
+            return false
+        }
+    }
