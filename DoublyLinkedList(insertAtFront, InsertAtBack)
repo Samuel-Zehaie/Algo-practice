@@ -1,0 +1,53 @@
+    insertAfter(targetVal, newVal) {
+        let newNode = new Node(newVal)
+        if (this.head === null) {
+            this.head = newNode
+            return true
+        }
+        let runner = this.head
+        while (runner !== null) {
+            if (runner.data === targetVal) {
+                if (runner.next === null) {
+                    runner.next = newNode
+                    newNode.prev = runner
+                } else {
+                    runner.next.prev = newNode
+                    newNode.next = runner.next
+                    newNode.prev = runner
+                    runner.next = newNode
+                }
+                return true
+            }
+            runner = runner.next
+        }
+        return false
+    }
+
+
+
+    insertBefore(targetVal, newVal) {
+        let newNode = new Node(newVal)
+        if (this.head === null) {
+            this.head = newNode
+            return true
+        }
+        let runner = this.head
+        while (runner !== null) {
+            if (runner.data === targetVal) {
+                if (runner.prev === null) {
+                    runner.prev = newNode
+                    newNode.next = runner
+                    this.head = newNode
+                } else {
+                    runner.prev = newNode
+                    newNode.next = runner
+                    runner.prev.next = newNode
+                    newNode.prev = runner.prev
+            
+                }
+                return true
+            }
+            runner = runner.next
+        }
+        return false
+    }
