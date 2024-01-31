@@ -1,0 +1,68 @@
+class Node{
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+class DoublyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null
+    }
+
+
+    insertAtFront(data) {
+        var newNode = new Node(data)
+    
+        if (this.head === null) {
+            this.head = newNode
+            this.tail = newNode
+        } else {
+            this.head.prev = newNode
+            newNode.next = this.head
+            this.head = newNode
+        }
+        return this
+    }
+
+    insertAtBack(data) {
+        var newNode = new Node(data)
+
+        if (this.head === null) {
+            this.head = newNode
+            this.tail = newNode
+        } else {
+            this.tail.next = newNode
+            newNode.prev = this.tail
+            this.tail = newNode
+        }
+        return this
+    }
+
+    removeMiddleNode() {
+        if (this.head === null) {
+            return null
+        }
+        if (this.size < 2 || this.size % 2 === 0) {
+            return "no middle node"
+        }
+            let runner = this.head
+            let front = null
+            let middle = null
+            let back = null
+            while (runner !== null) {
+                front = runner.next.next
+                middle = runner.next
+                back = runner
+                runner=runner.next
+            }
+            middle.next.prev = back
+            middle.prev.next = front
+            middle.next = null
+            middle.prev=null
+
+        return middle.data
+    }
+}
