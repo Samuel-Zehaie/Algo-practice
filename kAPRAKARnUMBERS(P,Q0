@@ -1,0 +1,44 @@
+A modified Kaprekar number is a positive whole number with a special property. If you square it, then split the number into two integers and sum those integers, you have the same value you started with.
+Consider a positive whole number  with  digits. We square  to arrive at a number that is either  digits long or  digits long. Split the string representation of the square into two parts,  and . 
+The right hand part,  must be  digits long. The left is the remaining substring. Convert those two substrings back to integers, add them and see if you get .
+EXAMPLE 1= 5^2=25.   2+5=7 AND != 5(ORIGINAL NUMBER WE SQUARED)  THEREFORE 5 IS NOT A KAPREKAR NUMBER
+
+EXAMPLE 2= 9^2=81. 8+1=9 WHICH IS =9(ORIGINAL NUMBER WE SQUARED) THEREFORE 9 IS A KAPREKAR NUMBER. 
+
+
+let p = 400
+let q=700
+
+function kaprekarNumbers(p, q) {
+    if(p>q){
+        console.log("invalid range")
+    }
+    let array = []
+    let found=false
+    for(let number=p; number<=q; number++){
+        if(number===1){
+            array.push(number)
+            found = true;
+            continue
+        }
+        let squared=(number)**2
+        let string=String(squared)
+        let middle=Math.floor(string.length/2)
+        let leftstr=string.slice(0,middle)
+        let rightstr=string.slice(middle)
+        let left=parseInt(leftstr)
+        let right=parseInt(rightstr)
+        let added=left+right
+        if(added===(number)){
+            array.push(number)
+            found = true;
+        }
+        
+    }
+    if (!found) {
+        console.log("invalid range")
+    } else {
+        console.log(array.join(" "))
+    }
+}
+kaprekarNumbers(p,q)
