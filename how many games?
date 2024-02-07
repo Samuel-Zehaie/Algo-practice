@@ -1,0 +1,33 @@
+//how many games can you buy
+
+p = 20
+d = 3
+m = 6
+s = 85
+
+//output 7
+
+// 20 3 6 80
+
+// output//6
+
+
+function howManyGames(p, d, m, s) {
+    let count = 0
+    let sum = 0
+    while (sum <= s) {
+        if (p <= m && sum + m <= s) {
+            sum += m;
+            count++
+        } else if (p > m && sum + p <= s) {
+            sum += p;
+            count++
+            p -= d;
+        } else {
+            break
+        }
+    }
+    console.log(sum)
+    return count
+}
+console.log(howManyGames(p, d, m, s))
