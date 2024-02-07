@@ -1,0 +1,18 @@
+The distance between two array values is the number of indices between them. Given , find the minimum distance between any pair of equal elements in the array. If no such value exists, return -1
+
+let arrow = [7, 7, 3, 4, 1, 7]
+
+function minimumDistances(a) {
+        let minimum = Infinity;
+    let found = false;
+    for (let i = 0; i < a.length; i++){
+        for (let j = a.length - 1; j >= 0; j--){
+            if (a[j] === a[i] && i!== j) {
+                minimum = Math.min(minimum, Math.abs(j - i))
+                found = true;
+            }
+        }
+    }
+    return (found)? minimum: -1
+}
+console.log(minimumDistance(arrow))
