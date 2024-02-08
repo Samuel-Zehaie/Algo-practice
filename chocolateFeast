@@ -1,0 +1,25 @@
+//choclateFeast
+
+let n = 6
+let c = 2
+let m=2
+
+function chocolateFeast(n, c, m) {
+    let chocolates= n/c
+    let wrappers=chocolates
+    while(wrappers>=m){
+        let newChocolates=Math.floor(wrappers/m)
+        chocolates+=newChocolates
+        wrappers=(wrappers%m)+newChocolates
+    }
+    return Math.floor(chocolates)
+}
+
+console.log(chocolateFeast(n, c, m));
+
+
+
+3       t = 3 (test cases)
+10 2 5  n = 10, c = 2, m = 5 (first test case)
+12 4 4  n = 12, c = 4, m = 4 (second test case)
+6 2 2   n = 6,  c = 2, m = 2 (third test case)
