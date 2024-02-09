@@ -1,0 +1,26 @@
+//service lane
+
+find the smallest lane between the test cases indices.  example.  case[0,3].  loop through width index 0 to 3 inclusive, find the smallest element.  return the smallest element. 
+
+let width = [2, 3, 1, 2, 3, 2, 3, 3]
+
+cases = [[0, 3], [4, 6], [6, 7], [3, 5], [0, 7]]
+
+function serviceLane(n,width,cases) {
+    n=width.length
+    let result = []
+    for (let i = 0; i < cases.length; i++){
+        let entry = cases[i][0]
+        let exit = cases[i][1]
+        let minimum = Infinity
+        for (let j = entry; j <= exit; j++){
+            if (width[j] < minimum) {
+                minimum=width[j]
+            }
+        }
+        console.log(minimum)
+    }
+   
+}
+
+console.log(serviceLane(n,width,cases));
