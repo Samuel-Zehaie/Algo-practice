@@ -1,0 +1,43 @@
+Flatland is a country with a number of cities, some of which have space stations. 
+Cities are numbered consecutively and each has a road of  length connecting it to the next city. It is not a circular route, so the first city doesn't connect with the last city.
+Determine the maximum distance from any city to its nearest space station.
+
+in the example above. there is a space station in each city so the maximum distance between a city and its space station are 0
+
+n=5
+c=[0,4]
+maximum distance is 2.   0 distance in city 0, 1 distance in city 1, 2 distance in city 2, 1 distance in city 3 and 0 distance in city 4.  keep in mind we have a space station in city 0 and 4.  
+
+loop through n and get attach city variable accordingly.  city 0-4 (n=5)  then compare the distance between space station by subtraction the city-space station.  take the minimum of the 2 distances and push them to an array.  then find the maximum number
+within that array to find the max distance. 
+
+
+n = 6
+c=[0,1,2,4,3,5]
+
+
+function flatlandSpaceStations(n, c) {
+    let maxDistance = 0
+    let distances=[]
+
+    for (let i = 0; i < n; i++) {
+        let city = i
+        let minDistance=Infinity
+        
+        for (let j = 0; j <= c.length - 1; j++) {
+           
+            let Spacestationcity = c[j]
+            
+            let distance = Math.abs(city - Spacestationcity)
+            minDistance = Math.min(minDistance, distance)
+            
+            
+        }
+        distances.push(minDistance)
+        
+        
+    }
+    maxDistance=Math.max(...distances)
+    return maxDistance
+}
+console.log(flatlandSpaceStations(n,c))
