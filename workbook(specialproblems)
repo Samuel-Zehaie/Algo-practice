@@ -1,0 +1,40 @@
+Lisa just got a new math workbook. A workbook contains exercise problems, grouped into chapters.
+Lisa believes a problem to be special if its index (within a chapter) is the same as the page number where it's located. The format of Lisa's book is as follows:
+
+let arrrr = [4,2,6,1,10]
+let k = 3
+let nn = 5
+
+
+let arrrrr = [3, 8, 15, 11, 14, 1, 9, 2, 24, 31]
+let s = 5
+let mm=10
+
+
+function workbook(nn, k, arr) {
+    let specialCount = 0;
+    let pageNumber = 0;
+// the first loop itterates through arr to get the first number in the array.  problems= arr[chapter]  this line attaches the amount of problems to the variable problems. 
+    for (let chapter = 0; chapter < arr.length; chapter++) { 
+        const problems = arr[chapter];
+// the secondary loop itterates through the problems.   i starts at one since problem start at 1, maximum problems per page is 3, which is k.  problems 1 (1-1) % k===0 so pageNumber is increased by 1 for the first itteration
+// the second itteration where problems is 2, (2-1) % k===0.  condtion isn't meant since its !==0.  pageNumber does not increase so we stay at page 1 still. 
+        for (let i = 1; i <= problems; i++) {
+            if ((i - 1) % k === 0) {
+                pageNumber++;
+            }
+// a problem is considered special if the index ===pageNumber.  there is only one problem that meets this in the first chapter that has 4 problems.  specialCount is increased by 1 for the first chapter that has 1 problem.  this keeps ging until the function goes through all the elements in the array
+// returning total specialCount (special problems) 
+            if (i === pageNumber) {
+                specialCount++;
+            }
+        }
+    }
+
+    return specialCount;
+}
+
+
+
+console.log(workbook(nn, k, arrrr))
+console.log(workbook(mm,s,arrrrr))
