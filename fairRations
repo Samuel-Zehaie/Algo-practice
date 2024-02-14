@@ -1,0 +1,31 @@
+You are the benevolent ruler of Rankhacker Castle, and today you're distributing bread. Your subjects are in a line, and some of them already have some loaves.
+Times are hard and your castle's food stocks are dwindling, so you must distribute as few loaves as possible according to the following rules:
+
+Every time you give a loaf of bread to some person , you must also give a loaf of bread to the person immediately in front of or behind them in the line (i.e., persons i+1  or i-1 ).
+After all the bread is distributed, each person must have an even number of loaves.
+
+//we iterate through the arrray.  find an odd number of bread and start with giving
+//them 1 bread and the person next to them a bread also.  keep iterating and giving bread
+//one bread for each person until we are done iterating.  since we are giving bread to a piar
+//count is also =2.  then lastly once we are done with iterating, we check to see if the last
+//element has an even number.  if so we rturn count, if no is returned.
+
+let loafs=[2,3,4,5,6]
+
+function fairRations(B) {
+    let count = 0
+    for (let i = 0; i < B.length-1; i++) {
+        if (B[i] % 2 === 1) {
+            B[i] += 1
+            B[i + 1] += 1
+            count += 2
+        }
+    }
+        if (B[B.length-1]  % 2 === 1) {
+            return ("NO")
+        } else {
+            return (count)
+        }
+    }
+
+console.log(fairRations(loafs));
