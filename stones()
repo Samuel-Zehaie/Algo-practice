@@ -1,0 +1,41 @@
+let aa = 1
+
+let bb = 2
+
+let nnn=3
+
+find the last possible stone numbers.
+
+Manasa is out on a hike with friends. She finds a trail of stones with numbers on them. She starts following the trail and notices that any two consecutive stones' numbers differ by one of two values.
+Legend has it that there is a treasure trove at the end of the trail. If Manasa can guess the value of the last stone, the treasure will be hers.
+
+
+function stones(n, a, b) {
+
+    let possValues = new Set([0])
+
+    let i=0
+    while (i < n - 1) {
+        let nextValue = new Set()
+        console.log(nextValue)
+       
+        for (const val of possValues) {
+            const aVal = val + a
+            nextValue.add(aVal)
+            
+
+            const bVal = val + b
+            nextValue.add(bVal)
+            
+        }
+        possValues = nextValue
+        console.log(possValues)
+        
+        i++
+    }
+    const output = Array.from(possValues)
+    output.sort((a, b) => a - b)
+    return output
+}
+
+console.log(stones(nnn, aa, bb));
