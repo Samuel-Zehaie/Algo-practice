@@ -1,0 +1,48 @@
+//valid parentheses
+
+// we create a mapping to show corresponding brackets to closing
+// we loop through the string.  if its opening bracket, we push it to array.
+// if its a closing bracket, pop the last opening bracket we pushed into the array, assign it to a variable.  then we compare
+// the closing bracket corresponding value.  if they match then its a match therefore its valid. if not then
+// its false.
+
+// 
+
+let input1 = "()"
+//output; true
+
+let input2 = "()[]{}"
+//output; true
+
+let input3 = "(}"  // iterate through, opening bracket is not a key in the mapping. push it to the array.  grab the second element, its closing, compare that closing bracket to its corresponding value, if it doen't match then its a false. 
+//output; false
+
+let input4 = "(){}}{"
+//output; false
+
+var isValid = function (s) {
+    let array = []
+    let mapping = {
+        ")": "(",
+        "}": "{",
+        "]":"["
+    }
+    for (let i = 0; i < s.length; i++){
+        let char = s[i]
+        if (char in mapping) {
+            let popped = array.length === 0 ? "?" : array.pop();
+            if (popped !== mapping[char]) {
+                return false;
+            }
+        }
+        else {
+            array.push(char)
+        }
+
+    }
+    return array.length===0
+}
+console.log(isValid(input1));
+console.log(isValid(input2));
+console.log(isValid(input3));
+console.log(isValid(input4));
