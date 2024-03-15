@@ -1,0 +1,40 @@
+
+let inputs = "Hello World";
+//output=5  last word is "world"
+
+let inputss = " fly me  to  the moon ";
+//output=4  last word is "moon"
+
+let inputsss = "luffy is still joyboy";
+
+
+var lengthOfLastWord = function (s) {
+    let string = s.split(" ").filter(word => word !== " ")
+   
+    for (let i = string.length - 1; i >= 0; i--){
+        if (string[i].length > 0) {
+            return string[i].length
+        }
+    }
+
+};
+
+console.log(lengthOfLastWord(inputs));
+console.log(lengthOfLastWord(inputss));
+console.log(lengthOfLastWord(inputsss));
+
+
+
+iltering for Non-Empty Words: Initially, we split the input string s into an array of words using the space character as the delimiter, and then filter out any empty strings. 
+However, even after this filtering step, there's a possibility that the last word in the original string might be empty. 
+For example, consider the input string " fly me to the moon ". 
+After splitting and filtering, we get ["fly", "me", "to", "the", "moon"], but there's still an empty string at the end due to the trailing spaces.
+Returning the Last Non-Empty Word's Length: Our objective is to find the length of the last word in the input string. 
+To achieve this, we iterate through the filtered array string from the end to the beginning. 
+However, if we encounter an empty string while iterating from the end, it indicates that we haven't found the last non-empty word yet.
+Avoiding Premature Return: If we don't check for empty strings and immediately return the length of the first word we encounter, we might end up returning 0 prematurely if the last word is empty. 
+This would be incorrect because the last non-empty word's length should be returned.
+Ensuring Correct Output: By including the if (string[i].length > 0) condition, we ensure that we only return the length of the last non-empty word when we encounter it. 
+If we encounter an empty string, we skip it and continue iterating until we find the last non-empty word.
+
+In summary, the if (string[i].length > 0) condition ensures that we correctly identify the last non-empty word in the input string and return its length, thereby avoiding premature return of 0 and ensuring the correctness of the function's output.
