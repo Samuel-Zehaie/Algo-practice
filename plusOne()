@@ -1,0 +1,38 @@
+let array = [1, 2, 3]
+//output=[1,2,4]
+
+let array1 = [4, 3, 2, 1]
+//output=[4,3,2,2]
+
+let array2 = [9]
+//output=[1,0]
+
+let array3 = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]
+//output=[6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,4]
+
+
+// to solve this algo.  we created a carry=1 to simulate adding one.
+//we iterate from the least significant number by iterating digits.length-1, the back.
+//we add the carry, simulating adding 1.  if the result is 9 or less then we get out of the loop
+//if its 10 then we set the digits[i]= 0 and we continue the process. adding 1 as we iterate backward.
+//last if condition is if the first digit at index0 is equal to 0, we insert a 1 at the beggning of it. 
+//example, [9,9,9] which the ouput after unshifting(1) would be 1000. 
+var plusOne = function(digits) {
+    let carry = 1
+    for (let i = digits.length - 1; i >= 0; i--){
+        digits[i] += carry
+        if (digits[i] <= 9) {
+            break;
+        } else {
+            digits[i]=0
+        }
+    }
+    if (digits[0] === 0) {
+        digits.unshift(1)
+    }
+    return digits
+};
+console.log(plusOne(array));
+console.log(plusOne(array1));
+console.log(plusOne(array2));
+console.log(plusOne(array3));
