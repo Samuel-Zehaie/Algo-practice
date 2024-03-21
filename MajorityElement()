@@ -1,0 +1,31 @@
+return the element that occurs the most
+
+we creat an object first. and set the maxcount to 0 as well as intialize mostFrequent variable 
+
+we iterate through the array.  if the element doesn't appear in the object, we store it as a key value, the key being the element and the value being the amount of times we see it. 
+if its the first time we see the element within the object, we set it to 1 however if we seen it before we increment count.
+
+once we are one iterating, and we have our object filled with key-elment and value-count set.  
+the if conditon asks if the value of that element is larger than the max count then set that max count as the value of that element. 
+then we tie the mostFrequent variable the key(element) of that max count we just set. 
+
+
+var majorityElement = function(nums) {
+    let Object={};
+    let maxcount=0
+    let mostFrequent;
+    for(let i=0; i<nums.length; i++){
+        element=nums[i]
+        if(!Object[element]){
+            Object[element]=1
+        }else{
+            Object[element]++
+        }
+    if(Object[element]>maxcount){
+        count=Object[element];
+        mostFrequent=element;
+    }
+    }
+    return mostFrequent;
+    
+};
