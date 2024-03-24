@@ -1,0 +1,39 @@
+how we solved this algo.
+the way i understood is that we intially set res=0
+we create an object literal of the alphabet where the letter corresponds to a number, A:1 B:2 C:3 and so on Z:26
+the way we return its corresponding column number is. 0(res)*26+(number of the letter in the alphabe)t. example. ZY 0(initial res)*26+26(Z number in the alphabet)= 26  
+intial output for Z is 26 so res is set to 26
+then we work on the second letter 26(res after intial calculation)*26+25(Y number in the alphabet)=701  res is now 701 as you can see, that is the column title number of ZY.
+then its just a matter of writing down the logic once we figure out the calculation on how we got the answer. 
+a for loop to grab the letter string. we set res= res*26+number of the letter in the object literal we created. 
+
+let columnTitle = "A"
+//output 1
+
+let columnTitle1 = "AB"
+//output 28
+
+let columnTitle2 = "ZY"
+//output
+
+
+
+var titleToNumber = function(columnTitle) {
+    
+    let res=0
+    let map = {
+        
+            A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8, I: 9, J: 10,
+            K: 11, L: 12, M: 13, N: 14, O: 15, P: 16, Q: 17, R: 18, S: 19,
+            T: 20, U: 21, V: 22, W: 23, X: 24, Y: 25, Z: 26
+        };
+    for (let i = 0; i < columnTitle.length; i++){
+        res = res * 26 + map[columnTitle[i]]
+        
+    }
+    return res
+    
+};
+console.log(titleToNumber(columnTitle));
+console.log(titleToNumber(columnTitle1));
+console.log(titleToNumber(columnTitle2));
