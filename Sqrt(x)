@@ -1,0 +1,21 @@
+//sqrt(x)
+//find the square root of a number. round it down to the nearest integer.
+
+we used Math.sqrt(x) function to find the square root and then we used Math.floor() to round it down to the nearest integer. 
+
+let Inputexample= 4
+//Output: 2
+//Explanation: The square root of 4 is 2, so we return 2.
+//Example 2:
+
+let Inputexample1= 8
+//Output: 2
+//Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+
+var mySqrt = function(x) {
+    let output=Math.sqrt(x)
+    let output1=Math.floor(output)
+    return output1
+};
+console.log(mySqrt(Inputexample));
+console.log(mySqrt(Inputexample1));
