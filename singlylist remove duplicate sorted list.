@@ -1,0 +1,28 @@
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+ we have access to the head of a sorted singly linked list
+
+compare the value of the runner(runner.val) with he value of the next node(runner.next.val)  if they are equal then point current pointer(runner) to the node after the equal value(runner.next.val)
+you do this by creating an condtional where if(runner.val===runner.next.val){runner.next=runner.next.next.  this will skip the next similiar value as the runner value.  if not then just traverse 
+through the linked list, (runner=runner.next). return the head after you are done. 
+
+Input: head = [1,1,2]
+Output: [1,2]
+
+Input: head = [1,1,2,3,3]
+Output: [1,2,3]
+
+
+var deleteDuplicates = function(head) {
+    let runner=head
+    while(runner!=null && runner.next!==null){
+        if(runner.val===runner.next.val){
+           runner.next=runner.next.next
+        }else{
+            runner=runner.next
+        }
+    }
+    return head
+    
+};
+
