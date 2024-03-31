@@ -1,0 +1,38 @@
+
+let aaa = "11"
+let bbb = "1"
+
+// output "100"
+
+let ccc = "1010";
+let ddd = "1011";
+//output="10101"
+
+
+
+var addBinary = function (a, b) {
+    let result = "";
+    let carry = 0
+    
+    i = a.length - 1;
+    j = b.length - 1;
+
+    while (i >= 0 || j >= 0) {
+        let first = i >= 0 ? parseInt(a[i]) : 0;
+        let second = j >= 0 ? parseInt(b[j]) : 0;
+
+        let sum = first + second + carry
+        
+        result = (sum % 2) + result;
+        carry = sum >= 2 ? 1 : 0;
+        j--
+        i--
+    }
+    if (carry === 1) {
+        result = "1" + result;
+    }
+    return result;
+
+};
+console.log(addBinary(aaa, bbb));
+console.log(addBinary(ccc, ddd));
